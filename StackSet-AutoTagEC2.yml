@@ -9,8 +9,7 @@ Metadata:
           default: "AWS Lambda parameters"
         Parameters:
           - LambdaTimeout
-          - LambdaSourceS3Bucket
-          - LambdaFunctionZipName
+          - LambdaMemory
 Parameters:
   LambdaTimeout:
     Type: Number
@@ -23,6 +22,7 @@ Parameters:
 Resources:
   EventsRule:
     Type: AWS::Events::Rule
+    DependsOn: EC2TaggingLambda
     Properties:
       Description: Events rule for monitoring new EC2 creation.
       EventPattern:
@@ -47,6 +47,7 @@ Resources:
           Ref: AWS::StackName
   EC2TaggingLambda:
     Type: AWS::Lambda::Function
+    DependsOn: MGMTEC2TagRole
     Properties:
       Code:
         ZipFile: |
@@ -97,6 +98,7 @@ Resources:
         Ref: LambdaMemory
   MGMTEC2TagRole:
     Type: AWS::IAM::Role
+    DependsOn: MGMTEC2TagPol
     Properties:
       AssumeRolePolicyDocument:
         Version: '2012-10-17'

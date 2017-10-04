@@ -17,4 +17,4 @@ For details how to implement StackSets please read an link above.
 
 
 Author:
-Łukasz Dorosz (lukasz.dorosz@ttms.pl)
+Łukasz Dorosz [@mrdoro](https://twitter.com/mrdoro)
