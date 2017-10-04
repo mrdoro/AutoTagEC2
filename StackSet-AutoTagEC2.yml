@@ -98,7 +98,6 @@ Resources:
         Ref: LambdaMemory
   MGMTEC2TagRole:
     Type: AWS::IAM::Role
-    DependsOn: MGMTEC2TagPol
     Properties:
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
@@ -112,7 +111,6 @@ Resources:
         Fn::Sub: "${AWS::StackName}-MGMTEC2TagPol"
   MGMTEC2TagPol:
     Type: AWS::IAM::Policy
-    DependsOn: MGMTEC2TagRole
     Properties:
       PolicyDocument:
         Version: '2012-10-17'
