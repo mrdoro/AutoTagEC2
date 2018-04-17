@@ -36,7 +36,7 @@ Resources:
           eventName:
           - RunInstances
       Name:
-        Fn::Sub: "${AWS::StackName}-EC2TaggingRule"
+        Fn::Sub: "${AWS::StackName}-EC2Tag"
       State: ENABLED
       Targets:
       - Arn:
@@ -108,7 +108,7 @@ Resources:
             - lambda.amazonaws.com
           Action: sts:AssumeRole
       RoleName:
-        Fn::Sub: "${AWS::StackName}-MGMTEC2TagPol"
+        Fn::Sub: "${AWS::StackName}-TagPol"
   MGMTEC2TagPol:
     Type: AWS::IAM::Policy
     Properties:
